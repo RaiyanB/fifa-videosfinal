@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  h1.text-center.mt-4.text-uppercase(style="color: #ffd100") Hey #{username}!
+  h5.text-center.mb-3.text-light Relive the moments. Drop your clips. ⚽
+
+  .text-center.mb-4
+    a.btn.btn-warning.text-dark.fw-bold(href="/video/new_video") ➕ Add a Match Highlight
+
+  .mb-4
+    h3.text-light.text-center(style="border-bottom: 2px dashed #ffd100") Highlights (#{filter})
+
+  // Looser layout — stack videos unevenly
+  each video, index in videos
+    .mb-5(style=`padding-left: ${(index % 2) * 50}px`) // offset some cards
+      .p-3.border.border-warning.rounded(style="background-color: #ffffff10")
+        h5.text-warning.mb-2= video.title
+
+        - var id = ""
+        - if (video.url) {
+        -   if (video.url.includes("v=")) {
+        -     id = video.url.split("v=")[1].split("&")[0]
+        -   } else if (video.url.includes("youtu.be/")) {
+        -     id = video.url.split("youtu.be/")[1].split("?")[0]
+        -   }
+        - }
+
+        if id
+          iframe(
+            width="100%", height="270",
+            src=`https://www.youtube.com/embed/${id}`,
+            frameborder="0",
+            allow="autoplay; encrypted-media; picture-in-picture",
+            allowfullscreen
+          )
+
+        p.text-light.mt-2.text-end Small Club ⚽ #{video.user}
+
+  .d-grid.gap-3.mt-5
+    a.btn.btn-outline-light(href="/video/dashboard/all") 🌍 All
+    a.btn.btn-outline-success(href="/video/dashboard/mine") 🎞️ Yours
+    a.btn.btn-outline-danger(href="/auth/logout") Logout
