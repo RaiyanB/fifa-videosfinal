@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .row.justify-content-center
+    .col-md-6
+      .card.p-4.shadow-lg(style="background-color: #1a1a1a; border-radius: 12px;")
+        h2.text-center.mb-4.text-warning Welcome Back, Champion ⚽
+
+        if error
+          .alert.alert-danger.text-center= error
+
+        form(action="/auth/login" method="POST")
+          .mb-3
+            label.form-label.text-light(for="email") Email Address
+            input.form-control(type="email" name="email" placeholder="e.g. ronaldo@fifa.com" required)
+          .mb-3
+            label.form-label.text-light(for="password") Password
+            input.form-control(type="password" name="password" placeholder="Your secret passcode" required)
+          button.btn.btn-success.w-100.mt-3(type="submit") 🔓 Sign In
+
+        p.text-center.text-light.mt-4
+          | Don’t have an account?
+          a(href="/auth/register" class="text-warning ms-1") Register here 📝
