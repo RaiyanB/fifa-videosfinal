@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    title FIFA Video Hub
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css")
+    style.
+      body {
+        background: linear-gradient(to right, #640d14, #016a70);
+        color: #fff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+      }
+      .navbar {
+        background-color: #121212;
+      }
+      .navbar-brand {
+        font-weight: bold;
+        color: #ffd100 !important;
+        font-size: 1.5rem;
+      }
+      .card {
+        background-color: #ffffff12;
+        border: none;
+      }
+      .card-title {
+        color: #ffd100;
+        font-size: 1.2rem;
+        text-align: center;
+      }
+      a, .btn {
+        text-decoration: none;
+      }
+  body
+    nav.navbar.navbar-expand-lg
+      .container-fluid
+        a.navbar-brand(href="/video/dashboard/all") FIFA ⚽ Hub
+
+    .container.mt-5.mb-5.px-4
+      .row.justify-content-center
+        .col-lg-10
+          block content
